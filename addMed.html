@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management</title>
+    <link rel="stylesheet" href="./styles1.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add New Medicines</h1>
+
+        <form id="medicineForm">
+            <div class="alert">Medicine added successfully</div>
+
+            <div class="inputBox">
+                <input type="text" id="medicineName" placeholder="Medicine Name" />
+            </div>
+
+            <div class="inputBox">
+                <input type="text" id="companyName" placeholder="Company Name" />
+            </div>
+
+            <div class="inputBox">
+                <input type="date" id="manufactureDate" placeholder="Manufacture Date" />
+            </div>
+
+            <div class="inputBox">
+                <input type="date" id="expiryDate" placeholder="Expiry Date" />
+            </div>
+
+            <div class="inputBox">
+                <select id="medicineType">
+                    <option value="tablets">Tablets</option>
+                    <option value="capsules">Capsules</option>
+                    <option value="syrups">Syrups</option>
+                    <option value="injections">Injections</option>
+                </select>
+            </div>
+
+            <div class="inputBox">
+                <button type="submit">Add Medicine</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="./firebase-config.js"></script>
+    <script src="./medicine.js"></script>
+</body>
+
+</html>
