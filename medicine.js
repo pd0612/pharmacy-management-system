@@ -1,5 +1,7 @@
 // Copy your Firebase config information here
 
+// Copy your Firebase config information here
+
 const firebaseConfig = {
   apiKey: "AIzaSyDvd0aSq5baLfm7znloTe8VaCnN8Rz-YPE",
   authDomain: "pharmacymanagement-59505.firebaseapp.com",
@@ -27,8 +29,10 @@ function addMedicine(e) {
   var manufactureDate = getElementVal("manufactureDate");
   var expiryDate = getElementVal("expiryDate");
   var medicineType = getElementVal("medicineType");
+  var price=getElementVal("price");
+  var lot_no=getElementVal("lot_no");
 
-  saveMedicine(medicineName, companyName, manufactureDate, expiryDate, medicineType);
+  saveMedicine(medicineName, companyName, manufactureDate, expiryDate, medicineType,price,lot_no);
 
   // Enable alert
   document.querySelector(".alert").style.display = "block";
@@ -42,7 +46,7 @@ function addMedicine(e) {
   document.getElementById("medicineForm").reset();
 }
 
-const saveMedicine = (medicineName, companyName, manufactureDate, expiryDate, medicineType) => {
+const saveMedicine = (medicineName, companyName, manufactureDate, expiryDate, medicineType,price,lot_no) => {
   var newMedicine = medicineDB.push();
 
   newMedicine.set({
@@ -50,7 +54,10 @@ const saveMedicine = (medicineName, companyName, manufactureDate, expiryDate, me
     companyName: companyName,
     manufactureDate: manufactureDate,
     expiryDate: expiryDate,
-    medicineType: medicineType
+    medicineType: medicineType,
+    price:price,
+    lot_no:lot_no,
+
   });
 };
 
