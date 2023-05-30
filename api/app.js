@@ -61,6 +61,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const medicines = db.collection("medicines");
+app.use(express.json());
 
 app.get("/allMedicines", async (req, res) => {
   try {
@@ -74,6 +75,28 @@ app.get("/allMedicines", async (req, res) => {
     return res.status(500).json({ error: "Failed to get users" });
   }
 });
+app.post("/addMedicine", async (req, res) => {
+  let newMedicine = req.body;
+  let newName = newMedicine.medicineName; // Access the medicineName from the request body
+
+  try {
+    const querySnapshot = await medicines
+      .where("medicineName", "==", newName)
+      .get();
+
+    if (querySnapshot.empty) {
+      // If no matching documents found, add the new medicine to Firestore
+      await medicines.add(newMedicine);
+      return res.status(200).json({ message: "Medicine added successfully" });
+    } else {
+      return res.status(409).json({ message: "Medicine already exists" });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Failed to add medicine" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
